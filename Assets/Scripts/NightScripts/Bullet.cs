@@ -7,10 +7,12 @@ public class Bullet : MonoBehaviour
 
     [Header("References")]
     [SerializeField] private Rigidbody2D rb;
+    [SerializeField] private Transform bulletRotationPoint;
 
     [Header("Attributes")]
     [SerializeField] private float bulletSpeed = 5f;
-    [SerializeField] private int bulletDamage = 1;
+
+    private float bulletDamage;
 
     
     private Transform target;
@@ -19,11 +21,25 @@ public class Bullet : MonoBehaviour
         target = _target;
     }
 
+    public void SetbulletDamage(float _bulletDamage){
+        bulletDamage = _bulletDamage;
+    }
+    
+    public void RotateTowardsTarget(){
+        float angle = Mathf.Atan2(target.position.y -transform.position.y, target.position.x - transform.position.x )*Mathf.Rad2Deg - 90f;
+
+        Quaternion targetRotation = Quaternion.Euler(new Vector3(0f, 0f, angle));
+        bulletRotationPoint.rotation = Quaternion.RotateTowards(bulletRotationPoint.rotation, targetRotation, 100f);
+    }
+
     private void FixedUpdate(){
-        if (!target) return;
-
+        if (!target) {
+            Destroy(gameObject);
+            return;
+        }
+        
         Vector2 direction = (target.position - transform.position).normalized;
-
+        RotateTowardsTarget();
         rb.velocity = direction * bulletSpeed;
     }
 

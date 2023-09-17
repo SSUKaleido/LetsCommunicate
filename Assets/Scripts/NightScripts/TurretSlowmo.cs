@@ -16,19 +16,15 @@ public class TurretSlowmo : MonoBehaviour
     [SerializeField] private float aps = 4f; // Bullets Per Second
     [SerializeField] private float freezeTime = 1f;
     [SerializeField] private float freezeSpeed = 1f;
-    [SerializeField] private int baseUpgradeCost = 100;
 
     private float apsBase;
     private float targetingRangeBase;
     private float timeUntilFire;
 
-    private int level = 1;
 
     private void Start(){
         apsBase = aps;
         targetingRangeBase = targetingRange;
-
-        upgradeButton.onClick.AddListener(Upgrade);
     }
 
     private void Update(){
@@ -60,39 +56,7 @@ public class TurretSlowmo : MonoBehaviour
 
         em.ResetSpeed();
     }
-    public void OpenUpgradeUI (){
-        upgradeUI.SetActive(true);
-    }
-
-    public void CloseUpgradeUI(){
-        upgradeUI.SetActive(false);
-        UIManager.main.SetHoveringState(false);
-    }
-
-    public void Upgrade(){
-        if(CalculateCost() > LevelManager.main.currency)return;
-
-        LevelManager.main.SpendCurrency(CalculateCost());
-
-        level ++ ;
-
-        aps = CalculateAPS();
-        targetingRange = CalculateRange();
-
-        CloseUpgradeUI();
-    }
-
-    private int CalculateCost(){
-        return Mathf.RoundToInt(baseUpgradeCost * Mathf.Pow(level, 0.8f));
-    }
-
-    private float CalculateAPS(){
-        return apsBase * Mathf.Pow(level, 0.5f);
-    }
-
-    private float CalculateRange(){
-        return targetingRangeBase * Mathf.Pow(level, 0.4f);
-    }
+    
 
     private void OnDrawGizmosSelected(){
         Handles.color = Color.cyan;

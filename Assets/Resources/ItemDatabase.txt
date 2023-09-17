@@ -1,0 +1,12 @@
+Weapon	멋있는 목검	1	0	FALSE	0
+Weapon	녹슨 검	2	7	FALSE	1
+Weapon	그럴싸한 검	3	11	FALSE	2
+Weapon	우주류 검	6	30	FALSE	3
+Weapon	과학 검	9	40	FALSE	4
+Weapon	소통해방 검	15	100	FALSE	5
+Head	녹슨 투구	5	0	FALSE	6
+Head	만들다 만 투구	10	7	FALSE	7
+Head	강화 망한 투구	15	9	FALSE	8
+Head	투구게 투구	35	25	FALSE	9
+Head	태양불꽃 투구	50	35	FALSE	10
+Head	소통하는 투구	100	100	FALSE	11

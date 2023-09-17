@@ -19,21 +19,20 @@ public class Turret : MonoBehaviour
     [SerializeField] private float targetingRange = 5f;
     [SerializeField] private float rotationSpeed = 5f;
     [SerializeField] private float bps = 1f; // Bullets Per Second
-    [SerializeField] private int baseUpgradeCost = 100;
+    [SerializeField] private float bulletDamage = 1;
 
     private float bpsBase;
     private float targetingRangeBase;
+    private float bulletDamageBase;
 
     private Transform target;
     private float timeUntilFire;
 
-    private int level = 1;
 
     private void Start(){
         bpsBase = bps;
         targetingRangeBase = targetingRange;
-
-        upgradeButton.onClick.AddListener(Upgrade);
+        bulletDamageBase = bulletDamage;
     }
 
     private void Update(){
@@ -60,6 +59,8 @@ public class Turret : MonoBehaviour
         GameObject bulletObj = Instantiate(bulletPerfab, firingPoint.position, Quaternion.identity);
         Bullet bulletScipt = bulletObj.GetComponent<Bullet>();
         bulletScipt.SetTarget(target);
+        bulletScipt.RotateTowardsTarget();
+        bulletScipt.SetbulletDamage(bulletDamage);
     }
 
     private void FindTarget() {
@@ -80,39 +81,6 @@ public class Turret : MonoBehaviour
         turretRotationPoint.rotation = Quaternion.RotateTowards(turretRotationPoint.rotation, targetRotation, rotationSpeed*Time.deltaTime);
     }
 
-    public void OpenUpgradeUI (){
-        upgradeUI.SetActive(true);
-    }
-
-    public void CloseUpgradeUI(){
-        upgradeUI.SetActive(false);
-        UIManager.main.SetHoveringState(false);
-    }
-
-    public void Upgrade(){
-        if(CalculateCost() > LevelManager.main.currency)return;
-
-        LevelManager.main.SpendCurrency(CalculateCost());
-
-        level ++ ;
-
-        bps = CalculateBPS();
-        targetingRange = CalculateRange();
-
-        CloseUpgradeUI();
-    }
-
-    private int CalculateCost(){
-        return Mathf.RoundToInt(baseUpgradeCost * Mathf.Pow(level, 0.8f));
-    }
-
-    private float CalculateBPS(){
-        return bpsBase * Mathf.Pow(level, 0.5f);
-    }
-
-    private float CalculateRange(){
-        return targetingRangeBase * Mathf.Pow(level, 0.4f);
-    }
 
     private void OnDrawGizmosSelected(){
         Handles.color = Color.cyan;

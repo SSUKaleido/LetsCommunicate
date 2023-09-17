@@ -13,13 +13,24 @@ public class LevelManager : MonoBehaviour
     public Transform[] path;
 
     public int currency;
+    public int life;
+    public int currentWave;
+    public int endWave;
 
     private void Awake() {
         main = this;
     }
 
     private void Start(){
-        currency = 200;
+        currentWave = 1;
+    }
+
+    public void IncreaseWave(){
+        currentWave++;
+    }
+
+    public void DecreaseLife(){
+        life--;
     }
 
     public void IncreaseCurrency(int amount){
