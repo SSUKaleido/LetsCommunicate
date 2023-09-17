@@ -73,10 +73,10 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -250109891
-  m_SortingLayer: 3
+  m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: -926349704, guid: c297ceab7e17f8b4e98c2c190662b5a6, type: 3}
-  m_Color: {r: 0, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
+  m_Color: {r: 0, g: 0.96275425, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -103,10 +103,11 @@ MonoBehaviour:
     m_Bits: 64
   upgradeUI: {fileID: 2248949780539773773}
   upgradeButton: {fileID: 8875921776712331905}
-  targetingRange: 2
-  aps: 2.5
+  targetingRange: 3
+  aps: 0.5
   freezeTime: 2
   freezeSpeed: 0.5
+  baseUpgradeCost: 100
 --- !u!1 &2248949780539773773
 GameObject:
   m_ObjectHideFlags: 0

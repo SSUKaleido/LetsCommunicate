@@ -5,6 +5,8 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerController : MonoBehaviour
 {
+    public bl_Joystick js;
+
     Rigidbody2D rigid;
     [SerializeField] float MoveSpeed = 2f;
     public float JumpPower = 1f;
@@ -28,6 +30,13 @@ public class PlayerController : MonoBehaviour
     {
         HorizontalInputValue = Input.GetAxisRaw("Horizontal");
         VerticalInputValue = Input.GetAxisRaw("Vertical");
+
+        HorizontalInputValue = js.Horizontal;
+        VerticalInputValue = js.Vertical;
+
+        Vector3 dir = new Vector3(js.Horizontal, js.Vertical, 0);
+        dir.Normalize();
+
         //Debug.Log(VerticalInputValue);
 
         if (HorizontalInputValue != 0)
@@ -42,7 +51,7 @@ public class PlayerController : MonoBehaviour
             isJumping = true;
         } //점프 활성화
 
-        if (VerticalInputValue > 0)
+        if (VerticalInputValue > 0.1)
         {
             Debug.Log(isJumping);
             isJumping = true;
@@ -71,12 +80,12 @@ public class PlayerController : MonoBehaviour
     {
         Vector3 moveVelocity = Vector3.zero;
 
-        if (Input.GetKey(KeyCode.LeftArrow))
+        if (Input.GetKey(KeyCode.LeftArrow) || HorizontalInputValue < -0.1)
         {
             moveVelocity = Vector3.left;
         }
 
-        else if (Input.GetKey(KeyCode.RightArrow))
+        else if (Input.GetKey(KeyCode.RightArrow) || HorizontalInputValue > 0.1)
         {
             moveVelocity = Vector3.right;
         }

@@ -56,6 +56,17 @@ public class IngameTimerManager : MonoBehaviour
 
     public void IngameTimerDone()
     {
-        SceneManager.LoadScene("Scenes/TowerDefenseNight");
+        if (SceneManager.GetActiveScene().name == "Stage0")
+        {
+            SceneManager.LoadScene("Scenes/TowerDefenseNight0");
+        }
+        if (SceneManager.GetActiveScene().name == "Stage1.1")
+        {
+            SceneManager.LoadScene("Scenes/TowerDefenseNight1.1");
+        }
+        if (SceneManager.GetActiveScene().name == "Stage1.2")
+        {
+            SceneManager.LoadScene("Scenes/TowerDefenseNight1.1");
+        }
     }
 }
