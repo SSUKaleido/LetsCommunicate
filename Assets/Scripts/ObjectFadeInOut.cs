@@ -66,7 +66,7 @@ public class FadeInOut : MonoBehaviour
             Color c = FadePannel[Index].GetComponent<Image>().color;
             c.a = f;
             FadePannel[Index].GetComponent<Image>().color = c;
-            yield return new WaitForSeconds((float)(0.075));
+            yield return new WaitForSeconds((float)(0.025));
         }
         yield return new WaitForSeconds(1);
         isImgFadeInDone[Index] = true;
