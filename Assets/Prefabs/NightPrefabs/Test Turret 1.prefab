@@ -188,10 +188,10 @@ MonoBehaviour:
   firingPoint: {fileID: 24939585790042280}
   upgradeUI: {fileID: 2198551734879248010}
   upgradeButton: {fileID: 8389927115030233745}
-  targetingRange: 2
+  targetingRange: 2.5
   rotationSpeed: 500
   bps: 2
-  bulletDamage: 2.5
+  bulletDamage: 5
 --- !u!1 &1628162875791714106
 GameObject:
   m_ObjectHideFlags: 0

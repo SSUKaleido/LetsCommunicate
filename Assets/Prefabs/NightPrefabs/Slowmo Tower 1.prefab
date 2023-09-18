@@ -104,7 +104,7 @@ MonoBehaviour:
     m_Bits: 64
   upgradeUI: {fileID: 0}
   upgradeButton: {fileID: 0}
-  targetingRange: 2
+  targetingRange: 2.5
   aps: 2.5
   freezeTime: 2
   freezeSpeed: 1
@@ -157,7 +157,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 1}
+  m_LocalScale: {x: 6, y: 6, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5952141923194175936}

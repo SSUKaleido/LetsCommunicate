@@ -107,7 +107,7 @@ MonoBehaviour:
   targetingRange: 2
   aps: 2.5
   freezeTime: 2
-  freezeSpeed: 0.5
+  freezeSpeed: 1
 --- !u!95 &3358064889920067412
 Animator:
   serializedVersion: 5

@@ -191,7 +191,7 @@ MonoBehaviour:
   targetingRange: 2
   rotationSpeed: 500
   bps: 2
-  bulletDamage: 2
+  bulletDamage: 4
 --- !u!1 &1628162875791714106
 GameObject:
   m_ObjectHideFlags: 0
